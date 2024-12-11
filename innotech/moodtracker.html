@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .question-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        .options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            background: conic-gradient(from 0deg, #4CAF50 var(--percentage), #f0f0f0 var(--percentage));
+        }
+
+        .circle-inner {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: white;
+            border-radius: 50%;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .percentage {
+            font-size: 24px;
+            font-weight: bold; 
+        }
+
+        .dominant-state {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .recommendation {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Mental State Assessment</h1>
+    <div id="questionContainer"></div>
+    <div class="result-container" id="resultContainer">
+        <h2>Your Mental State Analysis</h2>
+        <div class="circle">
+            <div class="circle-inner">
+                <div class="percentage" id="percentageDisplay">0%</div>
+                <div class="dominant-state" id="dominantState"></div>
+            </div>
+        </div>
+        <div class="recommendation" id="recommendation"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                text: "How would you rate your overall mood today?",
+                options: ["Very Low", "Low", "Neutral", "Good", "Excellent"]
+            },
+            {
+                text: "How often do you feel anxious or worried?",
+                options: ["Never", "Rarely", "Sometimes", "Often", "Always"]
+            },
+            {
+                text: "How do you feel about your future?",
+                options: ["Very Hopeless", "Somewhat Hopeless", "Neutral", "Hopeful", "Very Hopeful"]
+            },
+            {
+                text: "How often do you compare yourself to others?",
+                options: ["Never", "Rarely", "Sometimes", "Often", "Always"]
+            },
+            {
+                text: "How satisfied are you with your current life situation?",
+                options: ["Very Unsatisfied", "Unsatisfied", "Neutral", "Satisfied", "Very Satisfied"]
+            },
+            {
+                text: "How often do you feel joy or happiness?",
+                options: ["Never", "Rarely", "Sometimes", "Often", "Always"]
+            },
+            {
+                text: "How well do you handle stress?",
+                options: ["Very Poorly", "Poorly", "Average", "Well", "Very Well"]
+            },
+            {
+                text: "How often do you feel lonely?",
+                options: ["Always", "Often", "Sometimes", "Rarely", "Never"]
+            },
+            {
+                text: "How motivated do you feel to achieve your goals?",
+                options: ["Not at all", "Slightly", "Moderately", "Very", "Extremely"]
+            },
+            {
+                text: "How often do you feel overwhelmed?",
+                options: ["Always", "Often", "Sometimes", "Rarely", "Never"]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = [];
+
+        function createQuestion(questionObj, index) {
+            const container = document.createElement('div');
+            container.className = `question-container ${index === 0 ? 'active' : ''}`;
+            
+            const questionText = document.createElement('h3');
+            questionText.textContent = `${index + 1}. ${questionObj.text}`;
+            container.appendChild(questionText);
+
+            const options = document.createElement('div');
+            options.className = 'options';
+
+            questionObj.options.forEach((option, i) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => handleAnswer(i);
+                options.appendChild(button);
+            });
+
+            container.appendChild(options);
+            return container;
+        }
+
+        function handleAnswer(value) {
+            answers.push(value);
+            
+            if (currentQuestion < questions.length - 1) {
+                document.querySelectorAll('.question-container')[currentQuestion].classList.remove('active');
+                currentQuestion++;
+                document.querySelectorAll('.question-container')[currentQuestion].classList.add('active');
+            } else {
+                showResults();
+            }
+        }
+
+        function analyzeResults() {
+            const total = answers.reduce((sum, value) => sum + value, 0);
+            const percentage = (total / (questions.length * 4)) * 100;
+            
+            let dominantState;
+            if (percentage < 20) dominantState = "Hopeless";
+            else if (percentage < 40) dominantState = "Anxious";
+            else if (percentage < 60) dominantState = "Neutral";
+            else if (percentage < 80) dominantState = "Happy";
+            else dominantState = "Very Happy";
+
+            return { percentage, dominantState };
+        }
+
+        function getRecommendation(dominantState) {
+            const recommendations = {
+                "Hopeless": "Consider reaching out to a mental health professional. Remember that you're not alone, and there are people who want to help.",
+                "Anxious": "Try incorporating relaxation techniques like deep breathing or meditation into your daily routine. Regular exercise can also help reduce anxiety.",
+                "Neutral": "You're maintaining a balanced state. Consider activities that bring you joy to enhance your well-being further.",
+                "Happy": "You're in a good place! Keep nurturing your positive relationships and engaging in activities that fulfill you.",
+                "Very Happy": "Excellent! You're thriving. Share your positivity with others and continue maintaining your healthy mental state."
+            };
+            return recommendations[dominantState];
+        }
+
+        function showResults() {
+            const questionContainer = document.getElementById('questionContainer');
+            questionContainer.style.display = 'none';
+
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.style.display = 'block';
+
+            const { percentage, dominantState } = analyzeResults();
+            
+            const circle = document.querySelector('.circle');
+            circle.style.setProperty('--percentage', `${percentage}%`);
+
+            document.getElementById('percentageDisplay').textContent = `${Math.round(percentage)}%`;
+            document.getElementById('dominantState').textContent = dominantState;
+            document.getElementById('recommendation').textContent = getRecommendation(dominantState);
+        }
+
+        // Initialize questions
+        const questionContainer = document.getElementById('questionContainer');
+        questions.forEach((question, index) => {
+            questionContainer.appendChild(createQuestion(question, index));
+        });
+    </script>
+</body>
+</html>

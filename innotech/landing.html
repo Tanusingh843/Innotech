@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnerBalance - Find Your Peace Within</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #6b48ff;
+            --secondary-color: #1e90ff;
+            --accent-color: #7fff00;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero {
+            max-width: 1200px;
+            padding: 4rem 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-inline: auto;
+        }
+
+        .start-button {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(107, 72, 255, 0.2);
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(107, 72, 255, 0.3);
+            background: var(--secondary-color);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .daily-quote {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .daily-quote q {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+
+        .daily-quote p {
+            margin-top: 1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                margin: 1rem;
+            }
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(100px, 100px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape" style="width: 100px; height: 100px; top: 10%; left: 10%;"></div>
+        <div class="shape" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
+        <div class="shape" style="width: 80px; height: 80px; top: 40%; left: 40%;"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">🌿</span>
+            InnerBalance
+        </div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#resources">Resources</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero">
+            <h1>Find Your Inner Balance</h1>
+            <p>Begin your journey to mental wellness with personalized guidance, mindfulness practices, and expert support. Let us help you discover the peace within.</p>
+            <button class="start-button" onclick="window.location.href='assessment.html'" id="start">Start Your Journey</button>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🧘‍♀️</div>
+                <h3>Mindfulness Practice</h3>
+                <p>Daily guided meditation sessions and breathing exercises tailored to your needs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Mood Tracking</h3>
+                <p>Track your emotional well-being and identify patterns for better self-awareness.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💭</div>
+                <h3>Expert Guidance</h3>
+                <p>Access to professional resources and personalized wellness strategies.</p>
+            </div>
+        </section>
+
+        <div class="daily-quote">
+            <q>Peace comes from within. Do not seek it without.</q>
+            <p>- Buddha</p>
+        </div>
+    </main>
+
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate floating shapes
+        document.querySelectorAll('.shape').forEach(shape => {
+            shape.style.animation = `float ${20 + Math.random() * 10}s infinite linear`;
+        });
+
+        var btn = document.getElementById("start")
+       btn.addEventListener("click",()=>{
+        location.assign("http://127.0.0.1:5500/main.html")
+
+
+        })
+    </script>
+</body>
+</html>

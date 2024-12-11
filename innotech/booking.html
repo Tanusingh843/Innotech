@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Psychiatrist Consultation Booking</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #9f66ff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .booking-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 450px;
+            max-width: 90%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a11cb;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #6a11cb;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #9f66ff;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #6a11cb;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <h1>Book Psychiatrist Consultation</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="consultation-type">Consultation Type</label>
+                <select id="consultation-type" name="consultation-type" required>
+                    <option value="">Select Consultation Type</option>
+                    <option value="initial">Initial Consultation</option>
+                    <option value="follow-up">Follow-up Session</option>
+                    <option value="urgent">Urgent Support</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="preferred-date">Preferred Date</label>
+                <input type="date" id="preferred-date" name="preferred-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="additional-notes">Additional Notes</label>
+                <textarea id="additional-notes" name="additional-notes" rows="4" placeholder="Any additional information you'd like to share"></textarea>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="window.location.href='bookingconfirmed.html';">Book Consultation</button>
+
+        </form>
+    </div>
+</body>
+</html>

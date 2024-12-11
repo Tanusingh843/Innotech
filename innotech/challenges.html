@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Stress Relief Exercise Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .exercise-card {
+            background-color: #eaf2f8;
+            border-left: 5px solid #3498db;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .challenge {
+            background-color: #f9e79f;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            width: 200px;
+            margin: 30px auto 0;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        .back-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .back-button::before {
+            content: '←';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        .back-button:hover::before {
+            transform: translateY(-50%) scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Stress Relief Exercise Challenge</h1>
+        
+        <div class="exercise-card">
+            <h2>Deep Breathing Exercise</h2>
+            <p>Practice 4-7-8 breathing technique: Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds. Repeat 4 times.</p>
+        </div>
+        
+        <div class="exercise-card">
+            <h2>Progressive Muscle Relaxation</h2>
+            <p>Systematically tense and relax muscle groups from toes to head. Hold each tension for 5 seconds, then release.</p>
+        </div>
+        
+        <div class="exercise-card">
+            <h2>Mindful Walking</h2>
+            <p>Take a 10-minute walk, focusing on your breath and the sensation of each step. Notice your surroundings without judgment.</p>
+        </div>
+        
+        <div class="exercise-card">
+            <h2>Yoga Stretch</h2>
+            <p>Perform 5 minutes of gentle yoga stretches, focusing on neck, shoulders, and back to release tension.</p>
+        </div>
+        
+        <div class="challenge">
+            <h2>Today's Stress Relief Challenge</h2>
+            <p>Practice 3 different stress relief techniques today. Track your progress and how you feel!</p>
+        </div>
+        
+        <button class="back-button" id="backPageBtn">Go Back</button>
+    </div>
+
+    <script>
+        var backPageBtn = document.getElementById("backPageBtn");
+        backPageBtn.addEventListener("click", function() {
+            // Option 1: Go back in browser history
+            window.history.back();
+            
+            // Option 2: If you want to go to a specific page, uncomment the line below
+             window.location.href = "2ndpage.html";
+        });
+    </script>
+</body>
+</html>

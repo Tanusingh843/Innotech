@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Professionals Directory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            background: #f0f2f5;
+            padding: 20px;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        header {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px 20px;
+            margin: 0 auto;
+            display: block;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+
+        .doctor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+
+        .doctor-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .doctor-photo {
+            width: 100%;
+            height: 200px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: #adb5bd;
+        }
+
+
+        .doctor-info {
+            padding: 20px;
+        }
+
+
+        .doctor-name {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+
+        .doctor-specialty {
+            color: #0066cc;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+        .doctor-experience {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+
+        .doctor-focus {
+            margin-bottom: 15px;
+        }
+
+
+        .focus-title {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+
+        .focus-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+
+        .focus-tag {
+            background: #e6f3ff;
+            color: #0066cc;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+
+        .consult-button {
+            width: 100%;
+            padding: 12px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+
+        .consult-button:hover {
+            background: #0052a3;
+        }
+
+
+        .availability {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+
+        .status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+
+        .available {
+            background: #28a745;
+        }
+
+
+        .busy {
+            background: #ffc107;
+        }
+
+
+        .rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+
+        .location {
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+
+        @media (max-width: 768px) {
+            .doctor-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Find A Mental Health Professional</h1>
+            <input type="text" class="search-box" placeholder="Search by name, specialty, or location...">
+        </header>
+
+
+        <div class="doctor-grid">
+            <!-- Doctor 1 -->
+            <div class="doctor-card">
+                <div class="doctor-photo">👩‍⚕️</div>
+                <div class="doctor-info"> 
+                    <h2 class="doctor-name">Dr. Aashish Soy</h2>
+                    <div class="doctor-specialty">Clinical Psychiatrist</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="availability">
+                        <div class="status available"></div>
+                        Available for Online Consultation
+                    </div>
+                    <div class="location"> 📍Jharkhand</div>
+                    <p class="doctor-experience">15+ years of experience specializing in anxiety and depression treatment.</p>
+                    <div class="doctor-focus">
+                        <div class="focus-title">Specializations:</div>
+                        <div class="focus-tags">
+                            <span class="focus-tag">Depression</span>
+                            <span class="focus-tag">Anxiety</span>
+                            <span class="focus-tag">CBT</span>
+                        </div>
+                    </div>
+                    <button class="consult-button" onclick="window.location.href='booking.html'">Book Consultation</button>
+                   
+                </div>
+            </div>
+
+
+            <!-- Doctor 2 -->
+            <div class="doctor-card">
+                <div class="doctor-photo">👨‍⚕️</div>
+                <div class="doctor-info">
+                    <h2 class="doctor-name">Dr.Sunil Mittal</h2>
+                    <div class="doctor-specialty">Child Psychiatrist</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="availability">
+                        <div class="status busy"></div>
+                        Next Available: Tomorrow
+                    </div>
+                    <div class="location">📍 Delhi</div>
+                    <p class="doctor-experience">12 years specializing in child and adolescent mental health.</p>
+                    <div class="doctor-focus">
+                        <div class="focus-title">Specializations:</div>
+                        <div class="focus-tags">
+                            <span class="focus-tag">ADHD</span>
+                            <span class="focus-tag">Autism</span>
+                            <span class="focus-tag">Family Therapy</span>
+                        </div>
+                    </div>
+                    <button class="consult-button" onclick="window.location.href='booking.html'">Book Consultation</button>
+                </div>
+            </div>
+
+
+            <!-- Doctor 3 -->
+            <div class="doctor-card">
+                <div class="doctor-photo">👩‍⚕️</div>
+                <div class="doctor-info">
+                    <h2 class="doctor-name">Dr.Gaurav gupta</h2>
+                    <div class="doctor-specialty">Trauma Specialist</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="availability">
+                        <div class="status available"></div>
+                        Available for Online Consultation
+                    </div>
+                    <div class="location">📍Delhi</div>
+                    <p class="doctor-experience">10+ years experience in trauma therapy and PTSD treatment.</p>
+                    <div class="doctor-focus">
+                        <div class="focus-title">Specializations:</div>
+                        <div class="focus-tags">
+                            <span class="focus-tag">PTSD</span>
+                            <span class="focus-tag">Trauma</span>
+                            <span class="focus-tag">EMDR</span>
+                        </div>
+                    </div>
+                    <button class="consult-button" onclick="window.location.href='booking.html'">Book Consultation</button>
+                   
+
+    
+                </div>
+            </div>
+
+
+            <!-- Doctor 4 -->
+            <div class="doctor-card">
+                <div class="doctor-photo">👨‍⚕️</div>
+                <div class="doctor-info">
+                    <h2 class="doctor-name">Dr.Ajit Dandekar</h2>
+                    <div class="doctor-specialty">Depression Specialist</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="availability">
+                        <div class="status busy"></div>
+                        Next Available: Today 5 PM
+                    </div>
+                    <div class="location">📍Bandra</div>
+                    <p class="doctor-experience">18 years specializing in addiction and recovery therapy.</p>
+                    <div class="doctor-focus">
+                        <div class="focus-title">Specializations:</div>
+                        <div class="focus-tags">
+                            <span class="focus-tag">Depression</span>
+                            <span class="focus-tag">Recovery</span>
+                            <span class="focus-tag">Substance Use</span>
+                        </div>
+                    </div>
+                    <button class="consult-button" onclick="window.location.href='booking.html'">Book Consultation</button>
+
+                    
+
+                    <!-- <script>
+                        // Event listener for Doctor 1
+                       
+                        var btn = document.getElementById("btn1").addEventListener("click", function() {
+                            location.assign("http://127.0.0.1:5500/booking.html");
+                        });
+                
+                        // Event listener for Doctor 2
+                        var btn = document.getElementById("btn2").addEventListener("click", function() {
+                            location.assign("http://127.0.0.1:5500/booking.html");
+                        });
+                
+                        // Event listener for Doctor 3
+                        var btn = document.getElementById("btn3").addEventListener("click", function() {
+                            location.assign("http://127.0.0.1:5500/booking.html");
+                        });
+                
+                        // Event listener for Doctor 4
+                        var btn = document.getElementById("btn4").addEventListener("click", function() {
+                            location.assign("http://127.0.0.1:5500/booking.html");
+                        });
+                    </script> -->
+                
+                </div>
+            </div>
+
+            <!-- Doctor 5-->
+            <div class="doctor-card">
+                <div class="doctor-photo">👩‍⚕️</div>
+                <div class="doctor-info"> 
+                    <h2 class="doctor-name">Dr. G. R. Reddy</h2>
+                    <div class="doctor-specialty">Psychiatrist</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="availability">
+                        <div class="status available"></div>
+                        Available for Online Consultation
+                    </div>
+                    <div class="location"> 📍Hyderabad</div>
+                    <p class="doctor-experience">15+ years of experience specializing in anxiety and depression treatment.</p>
+                    <div class="doctor-focus">
+                        <div class="focus-title">Specializations:</div>
+                        <div class="focus-tags">
+                            <span class="focus-tag">Depression</span>
+                            <span class="focus-tag">Anxiety</span>
+                            <span class="focus-tag">CBT</span>
+                        </div>
+                    </div>
+                    <button class="consult-button" onclick="window.location.href='booking.html'">Book Consultation</button>
+                   
+                </div>
+            </div>
+
+            <!-- Doctor 6 -->
+
+            <div class="doctor-card">
+                <div class="doctor-photo">👩‍⚕️</div>
+                <div class="doctor-info"> 
+                    <h2 class="doctor-name">Dr.Harish Shetty </h2>
+                    <div class="doctor-specialty">General Psychiatry</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="availability">
+                        <div class="status available"></div>
+                        Available for Online Consultation
+                    </div>
+                    <div class="location"> 📍Mumbai</div>
+                    <p class="doctor-experience">15+ years of experience specializing in anxiety and depression treatment.</p>
+                    <div class="doctor-focus">
+                        <div class="focus-title">Specializations:</div>
+                        <div class="focus-tags">
+                            <span class="focus-tag">Depression</span>
+                            <span class="focus-tag">Anxiety</span>
+                            <span class="focus-tag">CBT</span>
+                        </div>
+                    </div>
+                    <button class="consult-button" onclick="window.location.href='booking.html'">Book Consultation</button>
+                   
+                </div>
+            </div>
+            <button class="consult-button" onclick="window.location.href='2ndpage.html'">Go To Back</button>
+
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+
+        .mood .icon {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+
+        .chat .icon {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+
+        .consult .icon {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+
+        .exercise .icon {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+
+        h2 {
+            color: #444;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+
+        .btn {
+            background: #1976d2;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+        }
+
+
+        .btn:hover {
+            background: #1565c0;
+        }
+
+
+        .mood .btn { background: #1976d2; }
+        .chat .btn { background: #388e3c; }
+        .consult .btn { background: #7b1fa2; }
+        .exercise .btn { background: #f57c00; }
+
+
+        .mood .btn:hover { background: #1565c0; }
+        .chat .btn:hover { background: #2e7d32; }
+        .consult .btn:hover { background: #6a1b9a; }
+        .exercise .btn:hover { background: #ef6c00; }
+
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+           
+            .card {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mental Wellness Hub</h1>
+        <div class="card-container">
+            <div class="card mood">
+                <div class="icon">😊</div>
+                <h2>Mood Tracker</h2>
+                <p>Track your daily mood patterns and emotional well-being</p>
+                <button class="btn" id="btn">Track Mood</button>
+            </div>
+
+
+            <div class="card chat">
+                <div class="icon">💭</div>
+                <h2>AI Chat Support</h2>
+                <p>24/7 AI companion to talk about your feelings</p>
+                <button class="btn" id="chat">Start Chat</button>
+
+
+               
+            </div>
+
+
+            <div class="card consult">
+                <div class="icon">👨‍⚕️</div>
+                <h2>Psychiatrist Consultation</h2>
+                <p>Schedule video calls with licensed professionals</p>
+                <button class="btn" id="consult">Book Session</button>
+            </div>
+
+
+            <div class="card exercise">
+                <div class="icon">🧘</div>
+                <h2>Stress Relief Exercises</h2>
+                <p>Guided meditation, breathing exercises, and more</p>
+                <button class="btn" id="challenge">Start Exercise</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btn = document.getElementById("btn")
+       btn.addEventListener("click",()=>{
+        location.assign("http://127.0.0.1:5500/moodtracker.html")
+
+
+        })
+        var btn = document.getElementById("consult")
+       btn.addEventListener("click",()=>{
+        location.assign("http://127.0.0.1:5500/psychiatrist.html")
+
+
+        })
+        var btn = document.getElementById("chat")
+       btn.addEventListener("click",()=>{
+        location.assign("http://127.0.0.1:5500/aisupport.html")
+
+
+        })
+        var btn = document.getElementById("challenge")
+       btn.addEventListener("click",()=>{
+        location.assign("http://127.0.0.1:5500/challenges.html")
+
+
+        })
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus {
+            border-color: #4ecdc4;
+        }
+
+        .input-group label {
+            position: absolute;
+            left: 10px;
+            top: -10px;
+            background: white;
+            padding: 0 5px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: #4ecdc4;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #45b7b0;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #2ecc71;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registrationForm" onsubmit="return validateForm(event)">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error-message" id="nameError">Please enter a valid name</div>
+            </div>
+
+            <div class="input-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required min="1" max="120">
+                <div class="error-message" id="ageError">Please enter a valid age (1-120)</div>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+
+            <button type="submit" id="login">Register</button>
+        </form>
+        <div class="success-message" id="successMessage">Registration successful!</div>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const email = document.getElementById('email').value;
+            let isValid = true;
+
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(error => error.style.display = 'none');
+            document.getElementById('successMessage').style.display = 'none';
+
+            // Validate name
+            if (!/^[A-Za-z\s]{2,}$/.test(name)) {
+                document.getElementById('nameError').style.display = 'block';
+                document.getElementById('name').parentElement.classList.add('shake');
+                isValid = false;
+            }
+
+            // Validate age
+            if (age < 1 || age > 120) {
+                document.getElementById('ageError').style.display = 'block';
+                document.getElementById('age').parentElement.classList.add('shake');
+                isValid = false;
+            }
+
+            // Validate email
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                document.getElementById('email').parentElement.classList.add('shake');
+                isValid = false;
+            }
+
+            // Remove shake animation after it completes
+            document.querySelectorAll('.input-group').forEach(group => {
+                group.addEventListener('animationend', () => {
+                    group.classList.remove('shake');
+                });
+            });
+
+            if (isValid) {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('registrationForm').reset();
+            }
+
+            return false;
+        }
+
+        // Add focus effects
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.style.transform = 'scale(1.02)';
+            });
+
+            input.addEventListener('blur', () => {
+                input.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        var btn = document.getElementById("login")
+       btn.addEventListener("click",()=>{
+        location.assign("http://127.0.0.1:5500/2ndpage.html")
+
+
+        })
+    </script>
+</body>
+</html>
